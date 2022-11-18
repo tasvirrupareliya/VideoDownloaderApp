@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.ExitActivity">
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spin_progressbar"
+        style="@style/SpinKitView.Large.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:SpinKit_Color="@color/colorPrimaryDark"
+        tools:ignore="MissingClass" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spin_progressbar"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="You Are Leaving.."
+        android:textColor="@color/white"
+        android:fontFamily="@font/candera"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

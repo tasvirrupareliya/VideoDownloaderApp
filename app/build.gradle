@@ -1,0 +1,132 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.oliyapir.videodownloader.allvideodownloader"
+        minSdk 21
+        targetSdk 31
+        versionCode 5
+        versionName "5.0"
+        multiDexEnabled true
+        ndk {
+            abiFilters 'armeabi-v7a'
+            abiFilters 'arm64-v8a'
+            /*abiFilters 'x86'*/
+        }
+
+        ndkVersion '21.1.6528147'
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    /*signingConfigs {
+        release {
+            keyAlias '12345678'
+            keyPassword '12345678'
+            storeFile file('E:/test.jks')
+            storePassword '12345678'
+        }
+    }*/
+
+    buildTypes {
+        debug {
+            buildConfigField "String", "BaseURL", '"https://drive.google.com/uc?export=download&id=1QRt5d76joggGJfe2Z3HyQ9bXjmDIB7o-"'
+        }
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            /*signingConfig signingConfigs.release*/
+            buildConfigField "String", "BaseURL", '"https://drive.google.com/uc?export=download&id=1QRt5d76joggGJfe2Z3HyQ9bXjmDIB7o-"'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+   /* repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }*/
+
+    dataBinding {
+        enabled = true
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation files('libs/power-preference-lib-2.0.0.aar')
+    implementation files('libs/Android-SpinKit-1.2.0.aar')
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation 'com.android.volley:volley:1.2.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'com.google.android.play:core:1.7.2'
+    implementation 'com.google.android.gms:play-services-ads:21.1.0'
+    implementation 'com.google.firebase:firebase-analytics:20.1.2'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.3.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.3.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'org.apache.commons:commons-lang3:3.5'
+    implementation 'commons-io:commons-io:2.4'
+    implementation 'org.jsoup:jsoup:1.12.1'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-runtime:2.4.1"
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.4.1"
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.24'
+    implementation platform('com.google.firebase:firebase-bom:30.1.0')
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-messaging:23.0.2'
+    implementation 'androidx.work:work-runtime:2.7.1'
+    implementation 'com.zcw:togglebutton-library:1.0.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.airbnb.android:lottie:3.7.0'
+    implementation 'com.github.AnchorFreePartner.hydra-sdk-android:sdk-core:4.1.0'
+    implementation 'com.github.AnchorFreePartner.hydra-sdk-android:hydra:4.1.0'
+    implementation 'com.github.AnchorFreePartner.hydra-sdk-android:openvpn:4.1.0'
+    implementation 'com.google.ads.mediation:facebook:6.11.0.1'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+}
